@@ -1,0 +1,118 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+
+/* 
+    Created on : 28/03/2023, 07:51:09 PM
+    Author     : Ezequel Diaz
+*/
+
+@font-face {
+    font-family: 'SF Pro Text';
+    src: url('txt/SF-Pro-Text-Regular.otf');
+}
+
+
+*{
+    font-family: 'SF Pro Text';
+}
+
+body {
+    margin:0;
+    background-color: #111827;
+  }
+
+/* BAJO DE BARRA MENU */
+.small_txt{
+    font-size: 0.8rem;
+    text-align: center;
+    color: aliceblue;
+}
+
+/* OFERTA */
+.contenedor img{
+    height: 100%;
+    width: 99vw;
+    position: relative;
+    justify-content: center;
+    margin: 0;
+    filter: blur(9px);
+}
+
+.texto {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+.t1{
+    color: white;
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+.t2{
+    color: white;
+    font-size: 1.7rem;
+    margin: 7px 0 0 0;
+}
+
+.t3{
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.2rem;
+    margin-top: 7px;
+}
+
+.enlaces a{
+    color: #0800ffa2;
+    margin: 0 30px 0 30px;
+    font-size: 1.2rem;
+}
+/* FIN OFERTA */
+
+/* GIRD */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .item {
+    position: relative;
+  }
+  
+  .overlay-text{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    text-align: center;
+  }
+
+.t4{
+    color: rgba(80, 80, 80, 0.7);
+    font-size: 1.2rem;
+    position: relative;
+    top: -15px;
+    
+}
+.enlaces2{
+    color: #0800ffa2;
+    margin: 0 30px 0 30px;
+    font-size: 1.1rem;
+    position: relative;
+    top: -1px;
+    left: -15px;
+}
+.Recurso{
+    object-fit: cover;
+    width: 760px;
+    height: 300px;
+    filter: blur(2.5px);
+    animation-iteration-count: 1;
+}
+  

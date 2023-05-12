@@ -1,0 +1,64 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 3/05/2023, 11:56:03 AM
+    Author     : exedi
+*/
+
+/* Estilos para el título */
+body {
+  margin:0;
+  padding:0;
+  font-family: "Roboto",sans-serif;
+  background-color: #22242A
+}
+.GridHeader {
+  background-color: red;
+  color: white;
+  font-size: 26px;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+}
+
+/* Estilos para los input */
+input.borderColorText {
+  border: 1px solid #ccc;
+  padding: 5px;
+  font-size: 16px;
+  border-radius: 3px;
+  margin: 5px;
+}
+
+/* Estilos para los botones */
+input.boton {
+  background-color: red;
+  color: #fff;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+input.boton:disabled {
+  background-color: #ccc;
+  cursor: default;
+}
+
+/* Estilos para la tabla */
+table#referenciales {
+  border-collapse: collapse;
+  margin: 20px auto;
+  width: 50%;
+}
+
+table#referenciales td {
+  padding: 0;
+  text-align: left;
+  color: #fff;
+}
