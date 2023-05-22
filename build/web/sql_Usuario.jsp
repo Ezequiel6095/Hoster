@@ -1,77 +1,84 @@
+
+<%@page import="prgs.bdconexion"%>
 <%@ page import="java.io.*,java.util.*,java.net.*,java.sql.*" %>
-<%@ page import="prgs.bdconexion" %>
-<%
-bdconexion con = new bdconexion();
-Connection conexion = con.crearConexion();
-%>
+<%! bdconexion con = new bdconexion(); %>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%
+
 if(request.getParameter("btnborrar") != null)
-{  
+{ 
     Statement instruccion=null;
+    instruccion = con.crearConexion().createStatement();
+
     String id = request.getParameter("idUsuario");
-    try 
+
+    try
     {
-        instruccion = conexion.createStatement();
-        instruccion.executeUpdate("delete from Usuario where idUsuario =" + id + ";");
-        response.sendRedirect("gui_Usuario.jsp");
-        instruccion.close();
-    } catch(SQLException e) {
-        out.println(e);
-    }
+    instruccion.executeUpdate("delete from usuario where idUsuario ="+id+";");
+    response.sendRedirect("gui_Usuario.jsp");
+    instruccion.close();
+
+    } catch(SQLException e) {out.println(e);};
 }
 %>
-
-
+ 
 <%
 if(request.getParameter("btngrabar") != null)
 {
     Statement instruccion=null;
-    String nick = request.getParameter("nick");
-    String Pass  = request.getParameter("pass");
-    String nivel   = request.getParameter("nivel");
-    String estado   = request.getParameter("estado");
-    String nombre   = request.getParameter("nombre");
-    String direccion   = request.getParameter("direccion");
-    String mail   = request.getParameter("mail");
-    String telefono   = request.getParameter("telefono");
-    try {
-        instruccion = conexion.createStatement();
-        instruccion.executeUpdate("INSERT INTO Usuario(nick,pass,nivel,estado,nombre,direccion,mail,telefono) values('" + nick + "','" + Pass + "'," + nivel + "," + estado + ",'" + nombre + "','" + direccion + "','" + mail + "','" + telefono + "')");
-        response.sendRedirect("gui_Usuario.jsp");
-        instruccion.close();
-    } catch(SQLException e) {
-        out.println(e);
-    }
-}
-%>
-
-
-
-
-<%--        
-<%
-if(request.getParameter("btnmodi") != null)
-{
-    Statement instruccion=null;
     instruccion = con.crearConexion().createStatement();
 
-    String nick = request.getParameter("nick");
-    String des = request.getParameter("Pass");
-    String nivel   = request.getParameter("nivel");
-    String precio   = request.getParameter("precio");
-    String iva   = request.getParameter("iva");
-    String marca   = request.getParameter("combomarcas");
+    String idUsuario    = request.getParameter("idUsuario");
+    String nick   = request.getParameter("nick");
+    String pass = request.getParameter("pass");
+    String nivel = request.getParameter("nivel");
+    String estado = request.getParameter("estado");
+    String nombre = request.getParameter("nombre");
+    String direccion = request.getParameter("direccion");
+    String mail = request.getParameter("mail");
+    String telefono = request.getParameter("telefono");
+    // los demas values de los objetos de mi gui
     
-    try {
-    instruccion.executeUpdate("update producto set prd_Pass = '"+des+"',gru_codigo ="+nivel+",Prd_pvta ="+precio+",Prd_iva ="+iva+",mar_cod ="+marca+" where prd_codigo =" +nick+ ";");
+    try 
+    {
+    instruccion.executeUpdate("insert into usuario(idUsuario,nick,pass,nivel,estado,nombre,direccion,mail,telefono) values("+idUsuario+",'"+nick+"','"+pass+"','+nivel+','"+estado+"','"+nombre+"','"+direccion+"','"+mail+"','"+telefono+"');");
+
     response.sendRedirect("gui_Usuario.jsp");
+
     instruccion.close();
+
 
     } catch(SQLException e) {out.println(e);};
 
 }
 %>
---%>
-  
+       
+
+<%
+if(request.getParameter("btnmodi") != null)
+{
+   Statement instruccion=null;
+   instruccion = con.crearConexion().createStatement();
+
+    String idUsuario    = request.getParameter("idUsuario");
+    String pass = request.getParameter("pass");
+    String nivel = request.getParameter("nivel");
+    String estado = request.getParameter("estado");
+    String nombre = request.getParameter("nombre");
+    String direccion = request.getParameter("direccion");
+    String mail = request.getParameter("mail");
+    String telefono = request.getParameter("telefono");
+   
+    try 
+    {
+    instruccion.executeUpdate("UPDATE usuario SET pass = '" + pass + "', nivel = '" + nivel + "', estado = '" + estado + "', nombre = '" + nombre + "', direccion = '" + direccion + "', mail = '" + mail + "', telefono = '" + telefono + "' WHERE idUsuario = " + idUsuario + ";");
+    response.sendRedirect("gui_Usuario.jsp");
+    instruccion.close();
+
+    } catch(SQLException e) {out.println(e);};
+}
+%>
+
 

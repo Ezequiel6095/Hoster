@@ -15,3 +15,5 @@ Este proyecto, denominado Hoster, se desarrolla en el entorno de programación N
 
 <hr>
 <em>Es importante destacar que el proyecto Hoster actualmente se encuentra en una etapa de desarrollo y, por tanto, se trata de una práctica académica destinada a fines educativos en el ámbito universitario. Si bien este proyecto se encuentra en una fase temprana, se espera que mediante la utilización de las tecnologías mencionadas y la dedicación en su implementación, se logre crear una plataforma funcional y de calidad para la gestión de información de un hotel. </em>
+
+

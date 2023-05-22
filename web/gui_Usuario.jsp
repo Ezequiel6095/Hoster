@@ -20,13 +20,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">        
-        <%--<link href="imagenes/milogo.jpg" rel="shortcut icon">--%>
+        <link href="imagenes/milogo.jpg" rel="shortcut icon">
         <link href="CSS/Style_MenuUsuario.css" rel="stylesheet"/> 
         <link rel="icon" href="IMG/LOGO.png">
         <title>Perfiles</title>
-    </head>     
+    </head>  
         
-         
+    <body>
         <script language="javascript">
             function buscar(url){
                 open(url,'Busqueda','toolbar=no, width=600, height=600,\n\ status=yes, scrollbars=no, resize=yes, menubar=no');
@@ -37,29 +37,35 @@
                                       
           <table  align="center"  id="referenciales" border="1">    
            <tr>  
-                  <td  colspan="3" class="GridHeader"> <center><B>Perfiles de Hoster</B> </center></td>                 
+                  <td  colspan="3" class="GridHeader"> <center><B>Perfiles Registrados</B> </center></td>                 
            </tr>
           
           <%-- 
                 LOS OBJETOS LOS TEXT
           --%>
 
+            <tr>
+              <td COLSPAN="1" align="left">                 
+              <td align="left">idUsuario</td>
+              <td><input class="codigomar borderColorText" maxlength="15" type="number" name="idUsuario" size= 10  value="" value="<%=request.getParameter("idUsuario")%>" >  </td> 
+           </tr> 
+
            <tr>
               <td COLSPAN="1" align="left">                 
               <td align="left">Nick</td>
-              <td><input class="borderColorText" maxlength="15" type="number" name="nick" size= 10  value="" value="<%=request.getParameter("nick")%>" >  </td> 
+              <td><input class="borderColorText" maxlength="15" type="text" name="nick" size= 10  value="" value="<%=request.getParameter("nick")%>" >  </td> 
            </tr>   
            
            <tr>
               <td COLSPAN="1" align="left"> 
               <td align="left">Password</td>
-              <td><input class="borderColorText" maxlength="50" type="password" name="pass" size=50 disabled="true" value="" value="<%=request.getParameter("pass")%>" > </td>         
+              <td><input class="borderColorText" maxlength="50" type="text" name="pass" size=50 disabled="true" value="" value="<%=request.getParameter("pass")%>" > </td>         
            </tr>                                                       
            
            <tr>
               <td COLSPAN="1" align="left"> 
               <td align="left">Nivel</td>
-              <td><input class="borderColorText" maxlength="50" type="text" name="nivel" size=50 disabled="true" value="" value="<%=request.getParameter("nivel")%>" > </td>         
+              <td><input class="borderColorText" maxlength="50" type="number" name="nivel" size=50 disabled="true" value="" value="<%=request.getParameter("nivel")%>" > </td>         
            </tr>    
            
            <tr>
@@ -76,6 +82,12 @@
            
            <tr>
               <td COLSPAN="1" align="left"> 
+              <td align="left">Direccion</td>
+              <td><input class="borderColorText" maxlength="50" type="text" name="direccion" size=50 disabled="true" value="" value="<%=request.getParameter("direccion")%>" > </td>         
+           </tr>  
+           
+           <tr>
+              <td COLSPAN="1" align="left"> 
               <td align="left">Correo</td>
               <td><input class="borderColorText" maxlength="50" type="text" name="mail" size=50 disabled="true" value="" value="<%=request.getParameter("mail")%>" > </td>         
            </tr>  
@@ -84,7 +96,7 @@
               <td COLSPAN="1" align="left"> 
               <td align="left">Telefono</td>
               <td><input class="borderColorText" maxlength="50" type="text" name="telefono" size=50 disabled="true" value="" value="<%=request.getParameter("telefono")%>" > </td>         
-           </tr>  
+           </tr>         
            
            
             <%-- 
@@ -108,7 +120,7 @@
            
            <tr> 
                 <td COLSPAN="1" align="left">               
-                <td> <input class="boton" type="button" value="Salir" name="btnsalir" onclick="location.href='menu.jsp'"> </td>
+                <td> <input class="boton" type="button" value="Salir" name="btnsalir" onclick="location.href='MenuPrincipal.jsp'"> </td>
                 <td> <input class="boton" type="submit" value="Grabar" name="btngrabar" value="<%=request.getParameter("btngrabar")%>" disabled="disabled" onclick="mensaje_agregar()"> </td>
                 
            </tr> 
@@ -123,10 +135,10 @@
         Connection conn2 = conexion.crearConexion();
         dataSource.setConexion(conn2);
         StringBuffer sql2 = new StringBuffer("");
-        sql2.append("SELECT nick,nivel,estado,nombre,mail,telefono FROM usuario");
+        sql2.append("SELECT idUsuario,nick, pass, nivel,estado,nombre,direccion,mail,telefono FROM usuario");
         ResultSet tabla= dataSource.ObtenerDatogrilla(sql2.toString());
         out.println("<table width='600' HEIGHT='20' align='center' border=3 CellPadding=3><tr bgcolor='#E3E0E0'>");
-        out.println("<th>nick</th><th>nivel</th><th>estado</th><th>nombre</th>><th>mail</th>><th>telefono</th></tr>");
+        out.println("<th>idUsuario</th> <th>nick</th> <th>pass</th> <th>nivel</th> <th>estado</th> <th>nombre</th> <th>direccion</th> <th>mail</th> <th>telefono</th> </tr>");
         while(tabla.next())
         {
           out.println("<tr>");
@@ -136,12 +148,15 @@
           out.println("<td>"+tabla.getString(4)+"</td>");
           out.println("<td>"+tabla.getString(5)+"</td>");
           out.println("<td>"+tabla.getString(6)+"</td>");
+          out.println("<td>"+tabla.getString(7)+"</td>");
+          out.println("<td>"+tabla.getString(8)+"</td>");
+          out.println("<td>"+tabla.getString(9)+"</td>"); 
           
          %>
          
         <td align='center'>  <a method='post' action='' style='display:inline;' name='' 
-        href='javascript:retornar("<%=tabla.getString(1)%>","<%=tabla.getString(2)%>","<%=tabla.getString(3)%>","<%=tabla.getString(4)%>","<%=tabla.getString(5)%>","<%=tabla.getString(6)%>")'><img
-        src='https://cdn-icons-png.flaticon.com/128/2522/2522138.png' width="30" height="30" border='0' alt='Elegir'></a></td>
+        href='javascript:retornar("<%=tabla.getString(1)%>","<%=tabla.getString(2)%>","<%=tabla.getString(3)%>","<%=tabla.getString(4)%>","<%=tabla.getString(5)%>","<%=tabla.getString(6)%>","<%=tabla.getString(7)%>","<%=tabla.getString(8)%>","<%=tabla.getString(9)%>")'>
+                <img src='IMG/editar.png' class="imagen" border='0' alt='Elegir'></a></td>
          
         <%    
           out.println("</tr>");
@@ -156,7 +171,7 @@
         
             <table  align="center"  id="referenciales" border="0">    
               <tr>  
-                  <td> <b>Usuario Activo:</b> <%=vusuario%> </td>                
+                  <td> <b>Usuario:</b> <%=vusuario%> </td>                
               </tr>
            </table> 
             
@@ -177,10 +192,9 @@
         LAS FUNCIONES 
      --%>
     
-    <script lenguage="javascript">
+    <script language="javascript">
         function gen_cod()
         {           
-            //document.frmcargo.descrip.disabled=false;
            <%
             Connection conn = conexion.crearConexion();
             dataSource.setConexion(conn);
@@ -191,13 +205,20 @@
             String codigo = res1.getString("cod");
 
           %>           
-           document.gui_Usuario.codigomar.value="<%=codigo%>";
+           document.querySelector(".codigomar").value="<%=codigo%>";
         }
         
         function hab_txt()
         {
-            document.gui_Usuario.descrip.disabled=false;
-            document.gui_Usuario.procede.disabled=false;
+           document.gui_Usuario.idUsuario.disabled=false;
+           document.gui_Usuario.nick.disabled=false;
+           document.gui_Usuario.pass.disabled=false;
+           document.gui_Usuario.nivel.disabled=false;
+           document.gui_Usuario.estado.disabled=false;
+           document.gui_Usuario.nombre.disabled=false;
+           document.gui_Usuario.direccion.disabled=false;
+           document.gui_Usuario.mail.disabled=false;
+           document.gui_Usuario.telefono.disabled=false;
          }
         function des_btn()
         {
@@ -228,33 +249,33 @@
             document.gui_Usuario.btncancelar.disabled=false;
         }
         
-      
-        function des_descri()
-        {
-            document.gui_Usuario.descrip.disabled=false;
-        }
-        
         function des_text()
         {
-            
-            document.gui_Usuario.codigomar.disabled=true;
-            document.gui_Usuario.descrip.disabled=true;
-            document.gui_Usuario.procede.disabled=true;
-            
+           document.gui_Usuario.idUsuario.disabled=true;
+           document.gui_Usuario.nick.disabled=true;
+           document.gui_Usuario.pass.disabled=true;
+           document.gui_Usuario.nivel.disabled=true;
+           document.gui_Usuario.estado.disabled=true;
+           document.gui_Usuario.nombre.disabled=true;
+           document.gui_Usuario.direccion.disabled=true;
+           document.gui_Usuario.mail.disabled=true;
+           document.gui_Usuario.telefono.disabled=true;
         }
         
         function clear_text()
         {
+           document.gui_Usuario.idUsuario.value="";
            document.gui_Usuario.nick.value="";
            document.gui_Usuario.pass.value="";
            document.gui_Usuario.nivel.value="";
            document.gui_Usuario.estado.value="";
            document.gui_Usuario.nombre.value="";
+           document.gui_Usuario.direccion.value="";
            document.gui_Usuario.mail.value="";
            document.gui_Usuario.telefono.value="";
         }
         
-        function retornar(campo0,campo1,campo2,campo3,campo4,campo5,campo6,campo7)
+        function retornar(campo0,campo1,campo2,campo3,campo4,campo5,campo6,campo7,campo8)
         {
            document.gui_Usuario.idUsuario.value=campo0;
            document.gui_Usuario.nick.value=campo1;
@@ -262,8 +283,9 @@
            document.gui_Usuario.nivel.value=campo3;
            document.gui_Usuario.estado.value=campo4;
            document.gui_Usuario.nombre.value=campo5;
-           document.gui_Usuario.mail.value=campo6;
-           document.gui_Usuario.telefono.value=campo7;
+           document.gui_Usuario.direccion.value=campo6;
+           document.gui_Usuario.mail.value=campo7;
+           document.gui_Usuario.telefono.value=campo8;
             
            hab_txt();
            hab_boton();
