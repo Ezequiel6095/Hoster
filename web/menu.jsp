@@ -44,9 +44,9 @@
         <%=usuariodelacceso%>
       </div>
   </center>
-  <a href="gui_marcas.jsp"><i class="fas fa-desktop"></i><span>Referenciales</span></a>
+  <a href="#"><i class="fas fa-desktop"></i><span>Referenciales</span></a>
   <a href="gui_Usuario.jsp"><i class="fas fa-cogs"></i><span>Perfiles</span></a>
-  <a href="#"><i class="fas fa-table"></i><span>Movimientos</span></a>
+  <a href="gui_StatusH.jsp"><i class="fas fa-table"></i><span>Status Hababitaciones</span></a>
   <a href="#"><i class="fas fa-info-circle"></i><span>Informe</span></a>
   <a href="#"><i class="fas fa-info-circle"></i><span>Salir</span></a>
 </div>

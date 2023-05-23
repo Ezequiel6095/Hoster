@@ -120,7 +120,7 @@
            
            <tr> 
                 <td COLSPAN="1" align="left">               
-                <td> <input class="boton" type="button" value="Salir" name="btnsalir" onclick="location.href='MenuPrincipal.jsp'"> </td>
+                <td> <input class="boton" type="button" value="Salir" name="btnsalir" onclick="location.href='menu.jsp'"> </td>
                 <td> <input class="boton" type="submit" value="Grabar" name="btngrabar" value="<%=request.getParameter("btngrabar")%>" disabled="disabled" onclick="mensaje_agregar()"> </td>
                 
            </tr> 

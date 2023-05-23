@@ -43,7 +43,7 @@ if(request.getParameter("btngrabar") != null)
     
     try 
     {
-    instruccion.executeUpdate("insert into usuario(idUsuario,nick,pass,nivel,estado,nombre,direccion,mail,telefono) values("+idUsuario+",'"+nick+"','"+pass+"','+nivel+','"+estado+"','"+nombre+"','"+direccion+"','"+mail+"','"+telefono+"');");
+    instruccion.executeUpdate("insert into usuario(idUsuario,nick,pass,nivel,estado,nombre,direccion,mail,telefono) values("+idUsuario+","+nick+","+pass+","+nivel+","+estado+","+nombre+","+direccion+","+mail+","+telefono+");");
 
     response.sendRedirect("gui_Usuario.jsp");
 
