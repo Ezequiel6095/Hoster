@@ -13,8 +13,10 @@ body {
   margin:0;
   padding:0;
   font-family: "Roboto",sans-serif;
-  background-color: #22242A
+  background-color: #22242A !important;
+  color: white !important;
 }
+
 .GridHeader {
   background-color: red;
   color: white;
@@ -26,11 +28,12 @@ body {
 
 /* Estilos para los input */
 input.borderColorText {
-  border: 1px solid #ccc;
-  padding: 5px;
-  font-size: 16px;
-  border-radius: 3px;
-  margin: 5px;
+   border: 1px solid #ccc;
+   
+   font-size: 16px;
+   border-radius: 3px;
+   margin: 5px;
+   width: auto;
 }
 
 /* Estilos para los botones */
@@ -60,9 +63,10 @@ table#referenciales {
 table#referenciales td {
   padding: 0;
   text-align: left;
-  color: #fff;
+  color: white;
 }
-.imagen{
-    width: 20px;
-    height: 20px;
+
+.imagen {
+  width: 20px;
+  height: 20px;
 }

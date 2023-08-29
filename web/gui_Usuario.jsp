@@ -22,6 +22,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">        
         <link href="imagenes/milogo.jpg" rel="shortcut icon">
         <link href="CSS/Style_MenuUsuario.css" rel="stylesheet"/> 
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
         <link rel="icon" href="IMG/LOGO.png">
         <title>Perfiles</title>
     </head>  
@@ -37,7 +38,7 @@
                                       
           <table  align="center"  id="referenciales" border="1">    
            <tr>  
-                  <td  colspan="3" class="GridHeader"> <center><B>Perfiles Registrados</B> </center></td>                 
+               <td  colspan="3" class="GridHeader"> <center><B class="txt">Perfiles Registrados</B> </center></td>                 
            </tr>
           
           <%-- 
@@ -137,7 +138,7 @@
         StringBuffer sql2 = new StringBuffer("");
         sql2.append("SELECT idUsuario,nick, pass, nivel,estado,nombre,direccion,mail,telefono FROM usuario");
         ResultSet tabla= dataSource.ObtenerDatogrilla(sql2.toString());
-        out.println("<table width='600' HEIGHT='20' align='center' border=3 CellPadding=3><tr bgcolor='#E3E0E0'>");
+        out.println("<table width='600' HEIGHT='20' align='center' border=3 CellPadding=3><tr bgcolor='#000000'>");
         out.println("<th>idUsuario</th> <th>nick</th> <th>pass</th> <th>nivel</th> <th>estado</th> <th>nombre</th> <th>direccion</th> <th>mail</th> <th>telefono</th> </tr>");
         while(tabla.next())
         {
